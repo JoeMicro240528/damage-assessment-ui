@@ -11,7 +11,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                     <div className={`flex items-center space-x-3 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
                         <div className="flex items-center space-x-2">
-                            <img className="h-8 w-8" src="../../public/images/flag.png" alt="sudan flag" />
+                            <img className="h-8 w-8" src="/images/flag.png" alt="sudan flag" />
                             <Satellite className="h-8 w-8  text-[#0059B3]" />
                         </div>
                         <div className={isRTL ? 'text-right' : 'text-left'}>

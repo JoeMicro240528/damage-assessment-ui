@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="grid md:grid-cols-4 gap-8">
                 <div className="space-y-4">
                     <div className={`flex items-center space-x-2 ${isRTL ? 'space-x-reverse' : ''}`}>
-                        <img className="h-7 w-7" src="../../public/images/flag.png" alt="sudan flag" />
+                        <img className="h-7 w-7" src="/images/flag.png" alt="sudan flag" />
                         <Satellite className="h-6 w-6 text-[#0059B3]" />
                         <div className={isRTL ? 'text-right' : 'text-left'}>
                             <span className="font-bold">

@@ -60,25 +60,25 @@ const Index = () => {
             nameKey: 'team.member1.name',
             roleKey: 'team.member1.role',
             descriptionKey: 'team.member1.description',
-            image: '../../public/images/mohannd.JPG'
+            image: '/images/mohannd.JPG'
         },
         {
             nameKey: 'team.member2.name',
             roleKey: 'team.member2.role',
             descriptionKey: 'team.member2.description',
-            image: '../../public/images/noor.jpg'
+            image: '/images/noor.jpg'
         },
         {
             nameKey: 'team.member3.name',
             roleKey: 'team.member3.role',
             descriptionKey: 'team.member3.description',
-            image: '../../public/images/omer.jfif'
+            image: '/images/omer.jfif'
         },
         {
             nameKey: 'team.member4.name',
             roleKey: 'team.member4.role',
             descriptionKey: 'team.member4.description',
-            image: '../../public/images/yousef.jpg'
+            image: '/images/yousef.jpg'
         }
     ];
 
