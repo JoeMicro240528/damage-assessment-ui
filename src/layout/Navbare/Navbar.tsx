@@ -44,7 +44,23 @@ const Navbar = () => {
                             {t('nav.startAssessment')}
                         </Button>
                     </nav>
+
                 </div>
+
+            </div>
+            <div className="flex items-center justify-between mb-6 mx-5 space-x-3 md:hidden">
+                <Button
+
+                    className="w-2 h-2 mx-4 "
+                >
+                    <LanguageToggle />
+                </Button>
+                <Button
+
+                    className="bg-sudan-red cursor-pointer hover:bg-sudan-red/90 text-white"
+                >
+                    {t('nav.startAssessment')}
+                </Button>
             </div>
         </header>
     );
