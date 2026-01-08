@@ -140,7 +140,7 @@ const translations = {
         'footer.academicResearch': 'البحث الأكاديمي',
         'footer.documentation': 'التوثيق',
         'footer.contactSupport': 'اتصل بالدعم',
-        'footer.copyright': '© 2024 تقييم الأضرار - السودان. مبني للتأثير الإنساني والتميز الأكاديمي.',
+        'footer.copyright': `© ${new Date().getFullYear()} تقييم الأضرار - السودان. مبني للتأثير الإنساني  و اعادة الأعماره `,
 
         // Team Section
         'team.title': 'فريق التطوير',
@@ -300,7 +300,7 @@ const translations = {
         'footer.academicResearch': 'Academic Research',
         'footer.documentation': 'Documentation',
         'footer.contactSupport': 'Contact Support',
-        'footer.copyright': '© 2024 Sudan Damage Assessment. Built for humanitarian impact and academic excellence.',
+        'footer.copyright': `© ${new Date().getFullYear()} Sudan Damage Assessment. Built for humanitarian impact and reconstruction.`,
 
         // Team Section
         'team.title': 'Development Team',
@@ -336,18 +336,18 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [language, setLanguage] = useState<Language>('ar');
+    const [language, setLanguage] = useState<Language>('en');
 
     useEffect(() => {
         // Set document direction and language
-        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.dir = language === 'en' ? 'ltr' : 'rtl';
         document.documentElement.lang = language;
 
         // Apply RTL class to body for styling
-        if (language === 'ar') {
-            document.body.classList.add('rtl');
+        if (language === 'en') {
+            document.body.classList.add('ltr');
         } else {
-            document.body.classList.remove('rtl');
+            document.body.classList.remove('ltr');
         }
     }, [language]);
 
@@ -355,7 +355,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         return translations[language][key as keyof typeof translations[typeof language]] || key;
     };
 
-    const isRTL = language === 'ar';
+    const isRTL = language === 'en';
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>

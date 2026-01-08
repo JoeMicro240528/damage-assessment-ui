@@ -6,9 +6,10 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../layout/Navbare/Navbar";
 import Footer from "../layout/Footer.tsx/Footer";
 import HeroSection from "../layout/Hero/HeroSection";
-
+import { useNavigate } from "react-router";
 const Index = () => {
     const { t, isRTL } = useLanguage();
+    const navigate = useNavigate();
 
     const features = [
         {
@@ -104,17 +105,17 @@ const Index = () => {
                     <div className="flex flex-col md:flex-row justify-center items-center">
                         {sudanRegions.map((region, index) => (
                             <Card key={index} className={`border-0 shadow-md w-full lg:w-[50%] ${region.status === 'high-priority'
-                                ? `${isRTL ? 'border-r-4 border-r-[#D41111]' : 'border-l-4 border-l-[#D41111]'} bg-[#D41111]/5`
-                                : `${isRTL ? 'border-r-4 border-r-yellow-500' : 'border-l-4 border-l-yellow-500'} bg-yellow-500/5`
+                                ? `${!isRTL ? 'border-r-4 border-r-[#D41111]' : 'border-l-4 border-l-[#D41111]'} bg-[#D41111]/5`
+                                : `${!isRTL ? 'border-r-4 border-r-yellow-500' : 'border-l-4 border-l-yellow-500'} bg-yellow-500/5`
                                 }`}>
                                 <CardHeader>
                                     <div className="flex items-center justify-between">
-                                        <div className={isRTL ? 'text-right' : 'text-left'}>
+                                        <div className={!isRTL ? 'text-right' : 'text-left'}>
                                             <CardTitle className="text-lg">
-                                                {isRTL ? region.name : region.nameEn}
+                                                {!isRTL ? region.name : region.nameEn}
                                             </CardTitle>
                                             <p className="text-sm text-[#898F9A]">
-                                                {isRTL ? region.nameEn : region.name}
+                                                {!isRTL ? region.nameEn : region.name}
                                             </p>
                                         </div>
                                         <Badge
@@ -149,7 +150,7 @@ const Index = () => {
                                 <CardHeader>
                                     <div className="w-16 h-16 bg-[#0059B3]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                         <span className="text-2xl font-bold text-[#0059B3]">
-                                            {isRTL ? ['١', '٢', '٣'][step - 1] : step}
+                                            {!isRTL ? ['١', '٢', '٣'][step - 1] : step}
                                         </span>
                                     </div>
                                     <CardTitle>{t(`howItWorks.step${step}.title`)}</CardTitle>
@@ -181,7 +182,7 @@ const Index = () => {
                         {features.map((feature, index) => (
                             <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow">
                                 <CardHeader>
-                                    <div className={`flex items-center space-x-3 ${isRTL ? 'space-x-reverse' : ''}`}>
+                                    <div className={`flex items-center space-x-3 ${!isRTL ? 'space-x-reverse' : ''}`}>
                                         <div className="w-10 h-10 bg-[#0059B3]/10 rounded-lg flex items-center justify-center text-[#0059B3]">
                                             {feature.icon}
                                         </div>
@@ -250,7 +251,7 @@ const Index = () => {
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    <CardTitle className={`text-lg ${isRTL ? 'text-right' : 'text-left'}`}>
+                                    <CardTitle className={`text-lg ${!isRTL ? 'text-right' : 'text-left'}`}>
                                         {t(member.nameKey)}
                                     </CardTitle>
                                     <Badge variant="secondary" className="bg-[#0059B3]/10 text-[#0059B3]">
@@ -258,7 +259,7 @@ const Index = () => {
                                     </Badge>
                                 </CardHeader>
                                 <CardContent>
-                                    <p className={`text-sm text-[#898F9A] ${isRTL ? 'text-right' : 'text-left'}`}>
+                                    <p className={`text-sm text-[#898F9A] ${!isRTL ? 'text-right' : 'text-left'}`}>
                                         {t(member.descriptionKey)}
                                     </p>
                                 </CardContent>
@@ -280,8 +281,8 @@ const Index = () => {
                         </p>
                         <Button
                             size="lg"
-
                             className="bg-sudan-red hover:bg-sudan-red/90 cursor-pointer text-lg px-12 py-6 text-white"
+                            onClick={() => navigate('/analysis')}
                         >
                             {t('hero.startAssessment')}
                         </Button>

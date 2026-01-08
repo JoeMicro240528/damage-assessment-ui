@@ -6,7 +6,7 @@ const LanguageToggle = () => {
   const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    setLanguage(language === 'ar' ? 'en' : 'ar');
+    setLanguage(language === 'en' ? 'ar' : 'en');
   };
 
   return (
@@ -14,7 +14,7 @@ const LanguageToggle = () => {
       variant="outline"
       size="sm"
       onClick={toggleLanguage}
-      className="flex items-center space-x-2 min-w-[80px] border-[#ebe9e5] hover:bg-[#D41111] cursor-pointer hover:text-white transition-colors"
+      className="flex items-center space-x-2 min-w-[80px] border-[#ebe9e5] hover:bg-[#0059B3]/70 cursor-pointer hover:text-white transition-colors"
     >
       <Languages className="h-4 w-4" />
       <span className="font-medium">

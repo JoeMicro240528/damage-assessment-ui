@@ -7,20 +7,20 @@ export default function Footer() {
         <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-4 gap-8">
                 <div className="space-y-4">
-                    <div className={`flex items-center space-x-2 ${isRTL ? 'space-x-reverse' : ''}`}>
+                    <div className={`flex items-center space-x-2 ${!isRTL ? 'space-x-reverse' : ''}`}>
                         <img className="h-7 w-7" src="/images/flag.png" alt="sudan flag" />
                         <Satellite className="h-6 w-6 text-[#0059B3]" />
-                        <div className={isRTL ? 'text-right' : 'text-left'}>
+                        <div className={!isRTL ? 'text-right' : 'text-left'}>
                             <span className="font-bold">
-                                {isRTL ? 'تقييم الأضرار' : 'Damage Assessment'}
+                                {!isRTL ? 'تقييم الأضرار' : 'Damage Assessment'}
                             </span>
                             <p className="text-xs text-[#898F9A]">
-                                {isRTL ? 'Damage Assessment' : 'تقييم الأضرار'}
+                                {!isRTL ? 'Damage Assessment' : 'تقييم الأضرار'}
                             </p>
                         </div>
                     </div>
                     <p className="text-sm text-[#898F9A]">
-                        {isRTL
+                        {!isRTL
                             ? 'تحليل صور الأقمار الصناعية بالذكاء الاصطناعي لتقييم الأضرار الإنسانية في السودان.'
                             : 'AI-powered satellite imagery analysis for humanitarian damage assessment in Sudan.'
                         }
