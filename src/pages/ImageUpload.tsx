@@ -8,6 +8,17 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { FileUploadArea } from "@/components/common/FileUploadArea";
+
+interface ImageUploadProps {
+    preWarImage: any;
+    postWarImage: any;
+    handleDrop: (e: React.DragEvent, type: 'pre' | 'post') => void;
+    handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>, type: 'pre' | 'post') => void;
+    setCurrentStep: (step: number) => void;
+    canProceedToStep2: boolean;
+    setPreWarImage: (file: any) => void;
+    setPostWarImage: (file: any) => void;
+}
 const ImageUpload = ({
     preWarImage,
     postWarImage,
@@ -17,16 +28,7 @@ const ImageUpload = ({
     canProceedToStep2,
     setPreWarImage,
     setPostWarImage
-}: {
-    preWarImage: any;
-    postWarImage: any;
-    handleDrop: (e: React.DragEvent, type: 'pre' | 'post') => void;
-    handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>, type: 'pre' | 'post') => void;
-    setCurrentStep: (step: number) => void;
-    canProceedToStep2: boolean;
-    setPreWarImage: (file: any) => void;
-    setPostWarImage: (file: any) => void;
-}) => {
+}: ImageUploadProps) => {
     const { t, isRTL } = useLanguage();
     return (
         <Card className="border border-[#ebe9e5]">

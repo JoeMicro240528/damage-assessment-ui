@@ -12,7 +12,7 @@ const Header = ({ currentStep, totalSteps }: { currentStep: number; totalSteps: 
     const { t, isRTL } = useLanguage();
     const progressPercentage = (currentStep / totalSteps) * 100;
 
-    return (<header className="border-b border-[#ebe9e5] bg-[0 0% 100%]/95 backdrop-blur supports-[backdrop-filter]:bg-[0 0% 100%]/60">
+    return (<header className="border-b border-[#ebe9e5] bg-[#E7E7E7]/10 backdrop-blur supports-[backdrop-filter]:bg-[0 0% 100%]/60">
         <div className="container mx-auto px-4 py-4">
             <div className="flex md:items-center md:flex-row flex-col justify-between">
                 <div className={`flex justify-between mb-3 items-center md:space-x-4 ${isRTL ? 'md:space-x-reverse' : ''}`}>
