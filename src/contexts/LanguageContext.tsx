@@ -18,6 +18,7 @@ const translations = {
     "nav.regions": "المناطق",
     "nav.startAssessment": "ابدأ التقييم",
     "nav.backToHome": "العودة للرئيسية",
+    "nav.title": "تقييم أضرار السودان",
 
     // Hero Section
     "hero.aiTechnology": "تقنية الذكاء الاصطناعي",
@@ -30,6 +31,13 @@ const translations = {
     "hero.realTimeAnalysis": "تحليل فوري",
     "hero.highAccuracy": "دقة عالية",
     "hero.humanitarianFocus": "تركيز إنساني",
+    "hero.liveData": "بيانات مباشرة",
+    "hero.satelliteAnalysis": "تحليل الأقمار الصناعية",
+    "hero.blueNileRegion": "منطقة النيل الأزرق - السودان",
+    "hero.locationSudan": "الموقع: السودان",
+    "hero.activeAssessment": "تقييم نشط",
+    "hero.accuracyModel": "دقة 98.2%",
+    "hero.aiVisionModel": "نموذج رؤية بالذكاء الاصطناعي",
 
     // Priority Regions
     "regions.title": "المناطق ذات الأولوية",
@@ -230,6 +238,7 @@ const translations = {
     "nav.regions": "Regions",
     "nav.startAssessment": "Start Assessment",
     "nav.backToHome": "Back to Home",
+    "nav.title": "Sudan Damage Assessment",
 
     // Hero Section
     "hero.aiTechnology": "AI Technology",
@@ -242,6 +251,13 @@ const translations = {
     "hero.realTimeAnalysis": "Real-time Analysis",
     "hero.highAccuracy": "High Accuracy",
     "hero.humanitarianFocus": "Humanitarian Focus",
+    "hero.liveData": "Live Data",
+    "hero.satelliteAnalysis": "Satellite Analysis",
+    "hero.blueNileRegion": "Blue Nile Region - Sudan",
+    "hero.locationSudan": "Location: Sudan",
+    "hero.activeAssessment": "Active Assessment",
+    "hero.accuracyModel": "98.2% Accuracy",
+    "hero.aiVisionModel": "AI Vision Model",
 
     // Priority Regions
     "regions.title": "Priority Regions",
@@ -462,12 +478,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const t = (key: string): string => {
     return (
       translations[language][
-        key as keyof (typeof translations)[typeof language]
+      key as keyof (typeof translations)[typeof language]
       ] || key
     );
   };
 
-  const isRTL = language === "en";
+  const isRTL = language === "ar";
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>

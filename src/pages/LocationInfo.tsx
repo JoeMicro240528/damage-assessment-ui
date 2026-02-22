@@ -1,14 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Info } from "lucide-react";
+import { Globe, Calendar, FileText, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { motion } from "framer-motion";
 
 interface ILocationInfoProps {
     sudanStates: { value: string; label: string }[];
@@ -44,138 +41,143 @@ const LocationInfo = ({
     canProceedToStep3
 }: ILocationInfoProps) => {
     const { t, isRTL } = useLanguage();
+
     return (
-        <Card className="border border-[#ebe9e5] p-2">
-            <CardHeader>
-                <CardTitle className={`flex items-center border border-[#ebe9e5] p-2 space-x-2 ${!isRTL ? 'space-x-reverse' : ''}`}>
-                    <MapPin className="h-5 w-5" />
-                    <span>{t('location.title')}</span>
-                </CardTitle>
-                <CardDescription>
+        <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-12"
+        >
+            <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-primary/30 bg-primary/5">
+                    <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                        {t('location.title')}
+                    </span>
+                </div>
+                <h2 className="text-4xl font-black tracking-tighter uppercase text-foreground">
+                    {t('location.title')}
+                </h2>
+                <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                     {t('location.description')}
-                </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-                <div className="space-y-4 ">
-                    <div className="space-y-2">
-                        <Label htmlFor="sudan-state">{t('location.sudanState')}</Label>
-                        <Select value={sudanState} onValueChange={setSudanState} >
-                            <SelectTrigger className="border border-[#ebe9e5] p-2 focus:ring-[#0059B3]">
-                                <SelectValue className="" placeholder={t('location.selectState')} />
-                            </SelectTrigger>
-                            <SelectContent className="border border-[#ebe9e5] p-2 position-absolute z-50 bg-[#FFFFFF]">
-                                {sudanStates.map((state) => (
-                                    <SelectItem key={state.value} value={state.value}>
-                                        {state.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
+                </p>
+            </div>
+
+            <div className="relative group p-8 lg:p-12 glass-panel-heavy rounded-[2rem] overflow-hidden shadow-2xl border-white/10 mt-8">
+                <div className="absolute inset-0 bg-hud opacity-10 pointer-events-none" />
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/40 rounded-tl-[1.5rem]" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 rounded-tr-[1.5rem]" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/40 rounded-bl-[1.5rem]" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/40 rounded-br-[1.5rem]" />
+
+                <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                    <div className="space-y-8">
+                        <div className="space-y-3">
+                            <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70 flex items-center gap-2">
+                                <Globe className="h-3 w-3" />
+                                {t('location.sudanState')}
+                            </Label>
+                            <Select value={sudanState} onValueChange={setSudanState}>
+                                <SelectTrigger className="h-14 rounded-none border-white/10 bg-white/5 focus:ring-primary text-foreground">
+                                    <SelectValue placeholder={t('location.selectState')} />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-none border-white/10 bg-card text-foreground">
+                                    {sudanStates.map((state) => (
+                                        <SelectItem key={state.value} value={state.value} className="focus:bg-primary/20 cursor-pointer">
+                                            {state.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-3">
+                            <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70 flex items-center gap-2">
+                                <Calendar className="h-3 w-3" />
+                                {t('location.conflictPeriod')}
+                            </Label>
+                            <Select value={conflictPeriod} onValueChange={setConflictPeriod}>
+                                <SelectTrigger className="h-14 rounded-none border-white/10 bg-white/5 focus:ring-primary text-foreground">
+                                    <SelectValue placeholder={t('location.selectPeriod')} />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-none border-white/10 bg-card text-foreground">
+                                    {conflictPeriods.map((period) => (
+                                        <SelectItem key={period.value} value={period.value} className="focus:bg-primary/20 cursor-pointer">
+                                            {period.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="conflict-period">{t('location.conflictPeriod')}</Label>
-                        <Select value={conflictPeriod} onValueChange={setConflictPeriod}>
-                            <SelectTrigger className="border border-[#ebe9e5] p-2  focus:ring-[#0059B3]">
-                                <SelectValue className="border border-[#ebe9e5] p-2" placeholder={t('location.selectPeriod')} />
-                            </SelectTrigger>
-                            <SelectContent className="border border-[#ebe9e5] p-2 position-absolute z-50 bg-[#FFFFFF]">
-                                {conflictPeriods.map((period) => (
-                                    <SelectItem key={period.value} value={period.value}>
-                                        {period.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
+                    <div className="space-y-8">
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-3">
+                                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">
+                                    {t('location.latitude')}
+                                </Label>
+                                <Input
+                                    className="h-14 rounded-none border-white/10 bg-white/5 focus:ring-primary text-foreground font-mono"
+                                    type="number"
+                                    step="any"
+                                    placeholder="00.0000"
+                                    value={latitude}
+                                    onChange={(e) => setLatitude(e.target.value)}
+                                />
+                            </div>
+                            <div className="space-y-3">
+                                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">
+                                    {t('location.longitude')}
+                                </Label>
+                                <Input
+                                    className="h-14 rounded-none border-white/10 bg-white/5 focus:ring-primary text-foreground font-mono"
+                                    type="number"
+                                    step="any"
+                                    placeholder="00.0000"
+                                    value={longitude}
+                                    onChange={(e) => setLongitude(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-3">
+                            <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70 flex items-center gap-2">
+                                <FileText className="h-3 w-3" />
+                                {t('location.descriptionLabel')}
+                            </Label>
+                            <Textarea
+                                className="rounded-xl border border-white/20 bg-black/20 focus:ring-primary min-h-[120px] resize-none text-foreground backdrop-blur-sm shadow-inner transition-colors focus:bg-primary/5"
+                                placeholder={t('location.descriptionPlaceholder')}
+                                value={locationDescription}
+                                onChange={(e) => setLocationDescription(e.target.value)}
+                            />
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                        <Label htmlFor="latitude">{t('location.latitude')}</Label>
-                        <Input
-                            className="border border-[#ebe9e5] p-2 focus:ring-[#0059B3]"
-                            id="latitude"
-                            type="number"
-                            step="any"
-                            placeholder={!isRTL ? "مثال: 15.5007" : "e.g., 15.5007"}
-                            value={latitude}
-                            onChange={(e) => setLatitude(e.target.value)}
-                        />
-                        <p className="text-xs text-muted-foreground">
-                            {!isRTL
-                                ? 'صيغة الدرجات العشرية (مثال: 15.5007)'
-                                : 'Decimal degrees format (e.g., 15.5007)'
-                            }
-                        </p>
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="longitude">{t('location.longitude')}</Label>
-                        <Input
-                            className="border border-[#ebe9e5] p-2 focus:ring-[#0059B3]"
-                            id="longitude"
-                            type="number"
-                            step="any"
-                            placeholder={!isRTL ? "مثال: 32.5599" : "e.g., 32.5599"}
-                            value={longitude}
-                            onChange={(e) => setLongitude(e.target.value)}
-                        />
-                        <p className="text-xs text-muted-foreground">
-                            {!isRTL
-                                ? 'صيغة الدرجات العشرية (مثال: 32.5599)'
-                                : 'Decimal degrees format (e.g., 32.5599)'
-                            }
-                        </p>
-                    </div>
-                </div>
-
-                <div className="space-y-2">
-                    <Label htmlFor="description">{t('location.descriptionLabel')}</Label>
-                    <Textarea
-                        className="border border-[#ebe9e5] p-2 focus:ring-[#0059B3]"
-                        id="description"
-                        placeholder={t('location.descriptionPlaceholder')}
-                        value={locationDescription}
-                        onChange={(e) => setLocationDescription(e.target.value)}
-                        rows={3}
-                    />
-                    <p className="text-xs text-muted-foreground">
-                        {!isRTL
-                            ? 'اشمل المدينة والمنطقة والبلد وأي معالم أو أسماء أحياء ذات صلة.'
-                            : 'Include city, region, country, and any relevant landmarks or district names.'
-                        }
-                    </p>
-                </div>
-
-                <Alert className="border border-[#ebe9e5]">
-                    <Info className="h-4 w-4" />
-                    <AlertDescription>
-                        {!isRTL
-                            ? 'معلومات الموقع الدقيقة تساعد في تحسين التحليل وتمكن من سياق أفضل للنتائج.'
-                            : 'Accurate location information helps improve the analysis and enables better contextualization of results.'
-                        }
-                    </AlertDescription>
-                </Alert>
-
-                <div className="flex justify-between">
-                    <Button
-                        className="px-8  hover:bg-[#D41111] border-[#ebe9e5] cursor-pointer hover:text-white transition-colors duration-300 ease-in-out"
-                        variant="outline"
-                        onClick={() => setCurrentStep(1)}
-                    >
-                        {t('location.backToImages')}
-                    </Button>
-                    <Button
-                        onClick={() => setCurrentStep(3)}
-                        disabled={!canProceedToStep3}
-                        className="px-8 bg-sudan-blue hover:bg-sudan-blue/90 cursor-pointer text-white"
-                    >
-                        {t('location.reviewAnalyze')}
-                    </Button>
-                </div>
-            </CardContent>
-        </Card>
+            <div className={`flex flex-col sm:flex-row justify-between gap-6 pt-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <Button
+                    variant="ghost"
+                    size="lg"
+                    className="h-14 px-8 border border-white/20 text-foreground font-black uppercase tracking-widest rounded-full hover:bg-white/10 glass-button transition-all duration-300 group"
+                    onClick={() => setCurrentStep(1)}
+                >
+                    <ArrowLeft className={`mr-3 h-5 w-5 transition-transform group-hover:-translate-x-1 ${isRTL ? 'rotate-180 group-hover:translate-x-1' : ''}`} />
+                    {t('location.backToImages')}
+                </Button>
+                <Button
+                    size="lg"
+                    onClick={() => setCurrentStep(3)}
+                    disabled={!canProceedToStep3}
+                    className="h-14 px-12 bg-primary/90 hover:bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-full hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-300 group disabled:opacity-20 backdrop-blur-md border-none glass-button"
+                >
+                    <span>{t('location.reviewAnalyze')}</span>
+                    <ArrowRight className={`ml-3 h-5 w-5 transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+                </Button>
+            </div>
+        </motion.div>
     );
 };
 

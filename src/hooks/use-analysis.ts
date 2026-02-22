@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import { useEffect } from "react";
 
-interface UploadedFile {
+export interface UploadedFile {
     file: File;
     preview: string;
     status: 'uploading' | 'success' | 'error';

@@ -1,147 +1,103 @@
-@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
-@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap';
 
 @import "tailwindcss";
 
 @layer base {
     :root {
-        /* Base colors - Clean, professional palette */
-        --background: 0 0% 100%;
-        --foreground: 220 13% 18%;
+        /* Light Mode - Clean, Airy & Premium */
+        --background: 210 20% 98%;
+        --foreground: 222 47% 11%;
 
-        /* Card system */
         --card: 0 0% 100%;
-        --card-foreground: 220 13% 18%;
-
+        --card-foreground: 222 47% 11%;
         --popover: 0 0% 100%;
-        --popover-foreground: 220 13% 18%;
+        --popover-foreground: 222 47% 11%;
 
-        /* Sudan flag colors - Red, White, Black with Blue triangle */
-        --sudan-red: 0 85% 45%;
-        --sudan-blue: 210 100% 35%;
-        --sudan-black: 220 13% 18%;
-        --sudan-white: 0 0% 100%;
-        --sudan-sand: 35 45% 75%;
-        --nile-blue: 200 85% 45%;
+        --primary: 160 84% 39%;
+        --primary-foreground: 160 84% 98%;
 
-        /* Primary - Sudan blue for trust and national identity */
-        --primary: 210 100% 35%;
-        --primary-foreground: 0 0% 100%;
-        --primary-hover: 210 100% 30%;
+        --secondary: 210 20% 92%;
+        --secondary-foreground: 222 47% 11%;
 
-        /* Secondary - Desert sand tones */
-        --secondary: 35 25% 92%;
-        --secondary-foreground: 220 13% 18%;
+        --muted: 210 20% 94%;
+        --muted-foreground: 215 16% 47%;
 
-        /* Muted - Subtle backgrounds */
-        --muted: 35 15% 96%;
-        --muted-foreground: 220 9% 46%;
+        --accent: 45 93% 47%;
+        --accent-foreground: 222 47% 11%;
 
-        /* Accent - Sudan red for important actions */
-        --accent: 0 85% 45%;
-        --accent-foreground: 0 0% 100%;
-
-        /* Status colors for damage assessment */
-        --success: 142 76% 36%;
-        --success-foreground: 0 0% 100%;
-        --warning: 45 93% 47%;
-        --warning-foreground: 0 0% 100%;
         --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 100%;
+        --destructive-foreground: 210 40% 98%;
+        --success: 160 84% 39%;
+        --warning: 38 92% 50%;
 
-        /* Damage classification colors */
-        --damage-none: 142 76% 36%;
-        --damage-minor: 45 93% 47%;
-        --damage-major: 25 95% 53%;
-        --damage-destroyed: 0 84% 60%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 160 84% 39% / 0.5;
 
-        /* Interface elements */
-        --border: 220 13% 91%;
-        --input: 35 15% 91%;
-        --ring: 210 100% 35%;
+        --radius: 0.75rem;
+        /* Slightly rounder for modern feel */
 
-        --radius: 0.5rem;
+        --glow-primary: 0 0 24px hsla(160, 84%, 39%, 0.15);
+        --glow-accent: 0 0 24px hsla(45, 93%, 47%, 0.1);
 
-        /* Sudan-inspired gradients */
-        --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(210 100% 25%));
-        --gradient-hero: linear-gradient(135deg, hsl(210 100% 35%) 0%, hsl(0 85% 45%) 100%);
-        --gradient-sudan: linear-gradient(135deg, hsl(210 100% 35%) 0%, hsl(200 85% 45%) 50%, hsl(35 45% 75%) 100%);
-        --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(35 15% 98%));
-
-        /* Shadows for depth */
-        --shadow-sm: 0 1px 2px 0 hsl(220 13% 18% / 0.05);
-        --shadow-md: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -1px hsl(220 13% 18% / 0.06);
-        --shadow-lg: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -2px hsl(220 13% 18% / 0.05);
-        --shadow-xl: 0 20px 25px -5px hsl(220 13% 18% / 0.1), 0 10px 10px -5px hsl(220 13% 18% / 0.04);
-
-        /* Animations */
-        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-fast: all 0.15s ease-out;
-        --sidebar-background: 0 0% 98%;
-
-        --sidebar-foreground: 240 5.3% 26.1%;
-
-        --sidebar-primary: 240 5.9% 10%;
-
-        --sidebar-primary-foreground: 0 0% 98%;
-
-        --sidebar-accent: 240 4.8% 95.9%;
-
-        --sidebar-accent-foreground: 240 5.9% 10%;
-
-        --sidebar-border: 220 13% 91%;
-
-        --sidebar-ring: 217.2 91.2% 59.8%;
+        --gradient-cinematic:
+            radial-gradient(circle at 10% 20%, hsla(280, 90%, 65%, 0.15), transparent 50%),
+            radial-gradient(circle at 90% 80%, hsla(320, 90%, 60%, 0.15), transparent 50%),
+            radial-gradient(circle at 90% 20%, hsla(190, 90%, 60%, 0.15), transparent 50%),
+            radial-gradient(circle at 10% 80%, hsla(160, 84%, 50%, 0.15), transparent 50%);
+        --gradient-hud: linear-gradient(to bottom, transparent, hsla(160, 84%, 39%, 0.01) 50%, transparent);
     }
 
     .dark {
-        --background: 222.2 84% 4.9%;
-        --foreground: 210 40% 98%;
+        /* Deep Cinematic Dark Mode - High Contrast & Rich */
+        --background: 224 71% 4%;
+        /* Deeper, richer blue-black */
+        --foreground: 213 31% 91%;
 
-        --card: 222.2 84% 4.9%;
-        --card-foreground: 210 40% 98%;
+        --card: 222 47% 6%;
+        /* Slightly lighter than bg */
+        --card-foreground: 213 31% 91%;
+        --popover: 224 71% 4%;
+        --popover-foreground: 213 31% 91%;
 
-        --popover: 222.2 84% 4.9%;
-        --popover-foreground: 210 40% 98%;
+        --primary: 160 84% 39%;
+        --primary-foreground: 160 84% 5%;
 
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 11.2%;
-
-        --secondary: 217.2 32.6% 17.5%;
+        --secondary: 217 33% 15%;
         --secondary-foreground: 210 40% 98%;
 
-        --muted: 217.2 32.6% 17.5%;
-        --muted-foreground: 215 20.2% 65.1%;
+        --muted: 217 33% 10%;
+        --muted-foreground: 215 20% 65%;
 
-        --accent: 217.2 32.6% 17.5%;
-        --accent-foreground: 210 40% 98%;
+        --accent: 45 93% 47%;
+        --accent-foreground: 213 31% 91%;
 
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 210 40% 98%;
+        --border: 217 33% 15%;
+        --input: 217 33% 12%;
 
-        --border: 217.2 32.6% 17.5%;
-        --input: 217.2 32.6% 17.5%;
-        --ring: 212.7 26.8% 83.9%;
-        --sidebar-background: 240 5.9% 10%;
-        --sidebar-foreground: 240 4.8% 95.9%;
-        --sidebar-primary: 224.3 76.3% 48%;
-        --sidebar-primary-foreground: 0 0% 100%;
-        --sidebar-accent: 240 3.7% 15.9%;
-        --sidebar-accent-foreground: 240 4.8% 95.9%;
-        --sidebar-border: 240 3.7% 15.9%;
-        --sidebar-ring: 217.2 91.2% 59.8%;
-    }
-}
+        --glow-primary: 0 0 24px hsla(160, 84%, 39%, 0.4);
+        --glow-accent: 0 0 24px hsla(45, 93%, 47%, 0.3);
 
-@layer base {
-    * {
-        /* @apply border-border; */
+        --gradient-cinematic:
+            radial-gradient(circle at 15% 25%, hsla(280, 90%, 65%, 0.25), transparent 50%),
+            radial-gradient(circle at 85% 75%, hsla(320, 90%, 60%, 0.25), transparent 50%),
+            radial-gradient(circle at 85% 25%, hsla(190, 90%, 60%, 0.25), transparent 50%),
+            radial-gradient(circle at 15% 75%, hsla(160, 84%, 50%, 0.25), transparent 50%);
+        --gradient-hud: linear-gradient(to bottom, transparent, hsla(160, 84%, 39%, 0.03) 50%, transparent);
     }
 
     body {
-        /* @apply bg-background text-foreground; */
-        font-family: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
         font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        background-image: var(--gradient-cinematic);
+        background-attachment: fixed;
+        transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     /* Arabic text support */
@@ -151,121 +107,70 @@
         text-align: right;
     }
 
-    /* Sudan-specific utility classes */
-    .gradient-sudan {
-        background: var(--gradient-sudan);
-    }
-
-    .text-sudan-red {
-        color: hsl(var(--sudan-red));
-    }
-
-    .text-sudan-blue {
-        color: hsl(var(--sudan-blue));
-    }
-
-    .bg-sudan-red {
-        background-color: hsl(var(--sudan-red));
-    }
-
-    .bg-sudan-blue {
-        background-color: hsl(var(--sudan-blue));
-    }
-
     /* RTL Support */
     .rtl {
         direction: rtl;
     }
 
-    .rtl .space-x-2>*+* {
-        margin-left: 0;
-        margin-right: 0.5rem;
+    /* Cinematic Utility Classes */
+    .text-glow-primary {
+        text-shadow: 0 0 12px hsla(160, 84%, 39%, 0.6);
     }
 
-    .rtl .space-x-3>*+* {
-        margin-left: 0;
-        margin-right: 0.75rem;
+    .border-glow-primary {
+        box-shadow: 0 0 20px hsla(160, 84%, 39%, 0.25);
     }
 
-    .rtl .space-x-4>*+* {
-        margin-left: 0;
-        margin-right: 1rem;
+    .bg-hud {
+        background-image: var(--gradient-hud);
     }
 
-    .rtl .space-x-6>*+* {
-        margin-left: 0;
-        margin-right: 1.5rem;
+    /* Modern Glassmorphism Utilities */
+    .glass-panel {
+        background: hsla(var(--card) / 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid hsla(var(--border) / 0.5);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .rtl .space-x-8>*+* {
-        margin-left: 0;
-        margin-right: 2rem;
+    .glass-panel-heavy {
+        background: hsla(var(--card) / 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid hsla(var(--border) / 0.8);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     }
 
-    .rtl .ml-1 {
-        margin-left: 0;
-        margin-right: 0.25rem;
+    .glass-button {
+        background: hsla(var(--primary) / 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid hsla(var(--primary) / 0.3);
+        transition: all 0.3s ease;
     }
 
-    .rtl .ml-2 {
-        margin-left: 0;
-        margin-right: 0.5rem;
+    .glass-button:hover {
+        background: hsla(var(--primary) / 0.2);
+        border-color: hsla(var(--primary) / 0.6);
+        box-shadow: 0 0 15px hsla(var(--primary) / 0.3);
+    }
+}
+
+@layer utilities {
+    .animate-grid-flow {
+        background-size: 40px 40px;
+        background-image: linear-gradient(to right, hsla(213, 31%, 91%, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, hsla(213, 31%, 91%, 0.05) 1px, transparent 1px);
+        animation: grid-flow 20s linear infinite;
     }
 
-    .rtl .ml-4 {
-        margin-left: 0;
-        margin-right: 1rem;
-    }
+    @keyframes grid-flow {
+        0% {
+            background-position: 0 0;
+        }
 
-    .rtl .mr-1 {
-        margin-right: 0;
-        margin-left: 0.25rem;
-    }
-
-    .rtl .mr-2 {
-        margin-right: 0;
-        margin-left: 0.5rem;
-    }
-
-    .rtl .mr-4 {
-        margin-right: 0;
-        margin-left: 1rem;
-    }
-
-    .rtl .text-left {
-        text-align: right;
-    }
-
-    .rtl .text-right {
-        text-align: left;
-    }
-
-    /* Humanitarian-focused utility classes */
-    .damage-none {
-        /* @apply bg-green-500 text-white; */
-    }
-
-    .damage-minor {
-        /* @apply bg-yellow-500 text-white; */
-    }
-
-    .damage-major {
-        /* @apply bg-orange-500 text-white; */
-    }
-
-    .damage-destroyed {
-        /* @apply bg-red-500 text-white; */
-    }
-
-    .gradient-hero {
-        background: var(--gradient-hero);
-    }
-
-    .shadow-elegant {
-        box-shadow: var(--shadow-lg);
-    }
-
-    .transition-smooth {
-        transition: var(--transition-smooth);
+        100% {
+            background-position: 40px 40px;
+        }
     }
 }
