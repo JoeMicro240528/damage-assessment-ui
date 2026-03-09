@@ -25,6 +25,7 @@ const translations = {
     "hero.titleHighlight": "في السودان",
     "hero.description":
       "تقنية الذكاء الاصطناعي المتقدمة تحلل صور الأقمار الصناعية لتوفير تقييم دقيق وسريع لأضرار المباني للمنظمات الإنسانية والوكالات الحكومية والباحثين في السودان.",
+    "hero.cta": "ابدأ التقييم",
     "hero.startAssessment": "ابدأ تقييم الأضرار",
     "hero.learnMore": "تعرف أكثر",
     "hero.realTimeAnalysis": "تحليل فوري",
@@ -37,6 +38,10 @@ const translations = {
       "المناطق الأكثر تضرراً في السودان والتي تحتاج إلى تقييم عاجل للأضرار",
     "regions.highPriority": "أولوية عالية",
     "regions.mediumPriority": "أولوية متوسطة",
+    "regions.priorityScore": "مستوى الأولوية",
+    "regions.viewDetails": "عرض التفاصيل",
+    "regions.highPriorityTitle": "مناطق النزاع النشطة",
+    "regions.highPriorityDes": "تحتاج هذه المناطق إلى تحليل فوري بسبب كثافة المباني والأضرار المحتملة.",
 
     // How It Works
     "howItWorks.title": "كيف يعمل النظام",
@@ -54,6 +59,7 @@ const translations = {
 
     // Features
     "features.title": "المميزات الرئيسية",
+    "features.badge": "التكنولوجيا",
     "features.description":
       "مصمم خصيصاً للتطبيقات الإنسانية مع التركيز على الدقة وسهولة التفسير والاستخدام.",
     "features.aiAnalysis.title": "تحليل بالذكاء الاصطناعي",
@@ -237,6 +243,7 @@ const translations = {
     "hero.titleHighlight": "in Sudan",
     "hero.description":
       "Advanced AI technology analyzes satellite imagery to provide accurate, rapid assessment of building damage for humanitarian organizations, government agencies, and researchers working in Sudan.",
+    "hero.cta": "Start Assessment",
     "hero.startAssessment": "Start Damage Assessment",
     "hero.learnMore": "Learn More",
     "hero.realTimeAnalysis": "Real-time Analysis",
@@ -249,6 +256,10 @@ const translations = {
       "The most affected areas in Sudan that require urgent damage assessment",
     "regions.highPriority": "High Priority",
     "regions.mediumPriority": "Medium Priority",
+    "regions.priorityScore": "Priority Level",
+    "regions.viewDetails": "View Details",
+    "regions.highPriorityTitle": "Active Conflict Zones",
+    "regions.highPriorityDes": "These regions require immediate analysis due to high building density and reported incidents.",
 
     // How It Works
     "howItWorks.title": "How It Works",
@@ -266,6 +277,7 @@ const translations = {
 
     // Features
     "features.title": "Key Features",
+    "features.badge": "Technology",
     "features.description":
       "Designed specifically for humanitarian applications with focus on accuracy, interpretability, and ease of use.",
     "features.aiAnalysis.title": "AI-Powered Analysis",
@@ -462,12 +474,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const t = (key: string): string => {
     return (
       translations[language][
-        key as keyof (typeof translations)[typeof language]
+      key as keyof (typeof translations)[typeof language]
       ] || key
     );
   };
 
-  const isRTL = language === "en";
+  const isRTL = language === "ar";
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>

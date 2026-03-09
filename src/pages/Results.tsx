@@ -6,9 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CalendarIcon, Download, BarChart3, Info, AlertTriangle, XCircle, CheckCircle } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { format } from "date-fns";
 import ResultsHeader from "@/layout/Header/ResultsHeader";
+
 
 const Results = () => {
   const date = new Date();
@@ -19,15 +20,15 @@ const Results = () => {
       {/* Header */}
       <ResultsHeader />
       {/* Header */}
-      <div className="min-h-screen bg-gray-50/50 p-8 space-y-8 pb-5">
+      <div className="min-h-screen bg-background p-8 space-y-8 pb-5">
 
         <div className="container mx-auto px-4 space-y-8">
           {/* Page Title */}
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">
               {t('results.title')}
             </h1>
-            <p className="text-lg text-gray-500">
+            <p className="text-lg text-muted-foreground">
               {t('results.description')}
             </p>
           </div>
@@ -36,14 +37,14 @@ const Results = () => {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold flex items-center gap-2">
-                <BarChart3 className={cn("h-5 w-5 text-gray-500", isRTL && "rotate-180")} />
+                <BarChart3 className={cn("h-5 w-5 text-muted-foreground", isRTL && "rotate-180")} />
                 {t('results.stats.title')}
               </h2>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {/* Destroyed Card */}
-              <Card className="border-none shadow-sm">
+              <Card className="border border-border shadow-sm">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{t('results.stats.destroyed')}</CardTitle>
                   <XCircle className="h-4 w-4 text-red-500" />
@@ -61,7 +62,7 @@ const Results = () => {
               </Card>
 
               {/* Major Damage Card */}
-              <Card className="border-none shadow-sm">
+              <Card className="border border-border shadow-sm">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{t('results.stats.major')}</CardTitle>
                   <AlertTriangle className="h-4 w-4 text-amber-500" />
@@ -79,7 +80,7 @@ const Results = () => {
               </Card>
 
               {/* Minor Damage Card */}
-              <Card className="border-none shadow-sm">
+              <Card className="border border-border shadow-sm">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{t('results.stats.minor')}</CardTitle>
                   <Info className="h-4 w-4 text-yellow-600" />
@@ -97,7 +98,7 @@ const Results = () => {
               </Card>
 
               {/* No Damage Card */}
-              <Card className="border-none shadow-sm">
+              <Card className="border border-border shadow-sm">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{t('results.stats.none')}</CardTitle>
                   <CheckCircle className="h-4 w-4 text-emerald-500" />
@@ -146,7 +147,7 @@ const Results = () => {
           </div>
 
           {/* Footer / Actions */}
-          <div className=" bottom-0 left-0 right-0 bg-white border-t p-4">
+          <div className=" bottom-0 left-0 right-0 bg-background border-t border-border p-4">
             <div className="container mx-auto flex flex-col sm:flex-row items-center justify-end gap-4">
 
               <div className="flex items-center gap-2">
